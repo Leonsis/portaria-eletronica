@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gerenciar Cadastros</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/">Registro</a>
+            <a href="/consulta">Consulta</a>
+            <a href="/cadastro">Cadastro</a>
+            <a href="/emissao">Emissão de Carteirinhas</a>
+            <a href="/historico">Histórico</a>
+            <a href="/logout" class="logout">Logout</a>
+        </nav>
+    </header>
+    <div class="container">
+        <h1>Gerenciamento de Alunos</h1>
+        
+        <a href="{{ url_for('novo') }}" class="btn novo">Novo Cadastro</a>
+        <a href="{{ url_for('logout') }}" class="btn logout">Logout</a>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nome</th>
+                    <th>Turma</th>
+                    <th>Permissão</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for aluno in alunos %}
+                <tr>
+                    <td>{{ aluno.Codigo }}</td>
+                    <td>{{ aluno.Nome }}</td>
+                    <td>{{ aluno.Turma }}</td>
+                    <td class="{{ 'permitido' if aluno.Permissao == 'Sim' else 'negado' }}">
+                        {{ aluno.Permissao }}
+                    </td>
+                    <td>
+                        <a href="{{ url_for('editar', codigo=aluno.Codigo) }}" class="btn editar">Editar</a>
+                        <a href="{{ url_for('excluir', codigo=aluno.Codigo) }}" class="btn excluir">Excluir</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

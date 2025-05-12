@@ -1,0 +1,16 @@
+Nome: Minion
+Turma: TESTE
+Turno: Manhã
+Código: 202500001
+
+REGISTRO DE ACESSOS:
+------------------------------
+23/02/2025 13:32:19 - Acesso registrado
+23/02/2025 13:33:05 - Acesso registrado
+23/02/2025 16:53:40 - Acesso registrado
+23/02/2025 16:55:36 - Acesso registrado
+23/02/2025 16:55:43 - Acesso registrado
+23/02/2025 16:56:31 - Acesso registrado
+23/02/2025 16:56:45 - Acesso registrado
+23/02/2025 16:57:31 - Acesso registrado
+23/02/2025 16:57:45 - Acesso registrado

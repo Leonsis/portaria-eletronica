@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Emissão de Carteirinhas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/">Registro</a>
+            <a href="/consulta">Consulta</a>
+            <a href="/cadastro">Cadastro</a>
+            <a href="/emissao">Emissão de Carteirinhas</a>
+            <a href="/historico">Histórico</a>
+            <a href="/logout" class="logout">Logout</a>
+        </nav>
+    </header>
+    <div class="container">
+        <div style="text-align: right; margin-bottom: 20px;">
+            <a href="/logout" class="btn">Logout</a>
+        </div>
+        <h1>Emissão de Carteirinhas - {{ config.escola }}</h1>
+        
+        <div class="grid">
+            <div class="card">
+                <h2>Emissão Unitária</h2>
+                <form action="/emitir" method="POST">
+                    <input type="hidden" name="tipo_emissao" value="unitaria">
+                    <div class="form-group">
+                        <input type="text" name="codigo" placeholder="Código da Carteirinha" required>
+                    </div>
+                    <button type="submit" class="btn primary">Emitir</button>
+                </form>
+            </div>
+
+            <div class="card">
+                <h2>Emissão por Turma</h2>
+                <form action="/emitir" method="POST">
+                    <input type="hidden" name="tipo_emissao" value="turma">
+                    <div class="form-group">
+                        <select name="turma" required>
+                            <option value="">Selecione a Turma</option>
+                            {% for turma in turmas %}
+                            <option value="{{ turma }}">{{ turma }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <button type="submit" class="btn primary">Emitir Turma</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

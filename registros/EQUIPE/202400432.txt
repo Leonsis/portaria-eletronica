@@ -1,0 +1,12 @@
+Nome: Minion
+Turma: EQUIPE
+Turno: Manhã
+Código: 202400432
+
+REGISTRO DE ACESSOS:
+------------------------------
+27/02/2025 10:55:50 - Acesso registrado
+27/02/2025 16:38:44 - Acesso registrado
+27/02/2025 16:38:45 - Acesso registrado
+28/02/2025 07:31:15 - Acesso registrado
+13/03/2025 12:31:40 - Entrada

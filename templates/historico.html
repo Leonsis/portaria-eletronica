@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Histórico de Registros{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Histórico de Registros</h1>
+    <form method="POST" class="form-historico">
+        <label for="data">Selecione a data:</label>
+        <select name="data" id="data">
+            {% for arquivo in arquivos %}
+                <option value="{{ arquivo.split('.')[0] }}" {% if data_selecionada == arquivo.split('.')[0] %}selected{% endif %}>
+                    {{ arquivo.split('.')[0] }}
+                </option>
+            {% endfor %}
+        </select>
+        <button type="submit" class="btn">Ver Histórico</button>
+    </form>
+
+    {% if registros %}
+        <h2>Registros de {{ data_selecionada }}</h2>
+        <table class="table-historico">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nome</th>
+                    <th>Turma</th>
+                    <th>Turno</th>
+                    <th>Data/Hora</th>
+                    <th>Tipo</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for registro in registros %}
+                    <tr>
+                        <td>{{ registro['codigo'] }}</td>
+                        <td>{{ registro['nome'] }}</td>
+                        <td>{{ registro['turma'] }}</td>
+                        <td>{{ registro['turno'] }}</td>
+                        <td>{{ registro['data/hora'] }}</td>
+                        <td>{{ registro['tipo'] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% elif data_selecionada %}
+        <p class="alert">Nenhum registro encontrado para a data selecionada.</p>
+    {% endif %}
+</div>
+{% endblock %}

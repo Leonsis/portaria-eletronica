@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>Consulta de Histórico</h1>
+    
+    <form method="POST">
+        <div class="form-group">
+            <input type="text" 
+                   name="termo" 
+                   placeholder="Pesquisar por nome, código ou turma"
+                   value="{{ termo }}">
+            <button type="submit">Buscar</button>
+        </div>
+    </form>
+
+    {% if resultados %}
+    <div class="resultados-consulta">
+        {% for aluno in resultados %}
+        <div class="cartao-aluno">
+            <img src="{{ url_for('static', filename='fotos/' + aluno.Foto) }}" 
+                 alt="Foto do Aluno"
+                 class="foto-consulta">
+            
+            <div class="info-aluno">
+                <h3>{{ aluno.Nome }}</h3>
+                <p><strong>Código:</strong> {{ aluno.Codigo }}</p>
+                <p><strong>Turma:</strong> {{ aluno.Turma }}</p>
+                <p><strong>Status:</strong> 
+                    <span class="tag {% if aluno.Permissao == 'Sim' %}permitido{% else %}negado{% endif %}">
+                        {{ 'PERMITIDO' if aluno.Permissao == 'Sim' else 'PROIBIDO' }}
+                    </span>
+                </p>
+                <a href="{{ url_for('registros_files', filename=aluno.Turma + '/' + aluno.Codigo + '.txt') }}"
+ 
+                   target="_blank"
+                   class="link-historico">
+                    Ver Histórico Completo
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% elif request.method == 'POST' %}
+    <div class="mensagem aviso">
+        Nenhum resultado encontrado para "{{ termo }}"
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
