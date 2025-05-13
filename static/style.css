@@ -51,11 +51,14 @@ nav a {
     text-decoration: none;
     padding: 0.25rem 0.rem;
     border-radius: 5px;
-    transition: background 0.3s;
+    transition: background 0.3s;    
+    padding: 5px;
+    border: 1px solid #ffffff00;
 }
 
 nav a:hover {
     background: #457a43;
+    border: #ffffff;
 }
 
 .form-group {
