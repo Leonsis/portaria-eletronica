@@ -12,14 +12,21 @@
             <a href="/cadastro">Cadastro</a>
             <a href="/emissao">Emissão de Carteirinhas</a>
             <a href="/historico">Histórico</a>
+            <a href="/carometro">Carômetro</a>
             <a href="/logout" class="logout">Logout</a>
         </nav>
     </header>
     <div class="container">
-        <h1>Gerenciamento de Alunos</h1>
-        
-        <a href="{{ url_for('novo') }}" class="btn novo">Novo Cadastro</a>
-        <a href="{{ url_for('logout') }}" class="btn logout">Logout</a>
+        <div class="header-container">
+            <h1>Gerenciamento de Alunos</h1>
+            <a href="{{ url_for('novo') }}" class="btn novo">Novo Cadastro</a>
+        </div>
+
+         <!-- Barra de pesquisa -->
+        <form method="GET" action="{{ url_for('pesquisar') }}" class="form-group">
+            <input type="text" name="query" placeholder="Pesquisar por nome ou turma..." required>
+            <button type="submit">Pesquisar</button>
+        </form>
         
         <table>
             <thead>

@@ -41,9 +41,6 @@
 
 <div class="container mt-4">
     <div class="card">
-        <div class="card-header">
-            <h3>Contagem de Acessos do Dia</h3>
-        </div>
         <div class="counter-container">
             <div class="counter-item">
                 <h5>Manhã</h5>
@@ -77,8 +74,8 @@ function atualizarContadores() {
         });
 }
 
-// Atualiza os contadores a cada 5 segundos
-setInterval(atualizarContadores, 5000);
+// Atualiza os contadores a cada 1 segundos
+setInterval(atualizarContadores, 1000);
 
 // Atualização inicial
 atualizarContadores();

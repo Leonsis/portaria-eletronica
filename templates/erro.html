@@ -35,7 +35,7 @@
     <div class="error-container">
         <h1>⚠️ Ocorreu um Erro</h1>
         <div class="error-message">{{ mensagem }}</div>
-        <a href="{{ url_for('index') }}" class="back-button">Voltar ao Início</a>
+        <button class="btn voltar" onclick="window.history.back()" style="margin-top: 10px;">Voltar</button>
     </div>
 </body>
 </html>

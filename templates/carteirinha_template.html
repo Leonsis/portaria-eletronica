@@ -4,8 +4,8 @@
     <title>Carteirinha Escolar</title>
     <style>
         .carteirinha {
-            width: 107mm;
-            height: 85mm;
+            width: 112mm;
+            height: 88mm;
             border: 1px solid #000;
             margin: 5mm;
             display: inline-block;
@@ -91,15 +91,15 @@
                 Turno: {{ aluno.Turno }}<br>
                 Código: {{ aluno.Codigo }}
             </div>
-            <div class="validade">Validade: 31/12/2025</div>
+            <div class="validade">Validade: {{ aluno.validade }}</div>
         </div>
 
         <!-- Verso -->
         <div class="verso">
             <div class="info-escola">
-                <p>CENTRO EDUCACIONAL GISNO</p>
-                <p>Telefone: (61) 3426-6728</p>
-                <p>http://professorjbatista.com/cedgisno.html</p>
+                <p>{{ aluno.escola }}</p>
+                <p>{{ aluno.telefone }}</p>
+                <p>{{ aluno.endereco }}</p>
                 <img src="{{ url_for('static', filename='assinatura.png') }}" class="assinatura" alt="Assinatura">
             </div>
             <img src="{{ url_for('static', filename='barcodes/' + aluno.Codigo + '.png') }}" class="codigo-barras" alt="Código de Barras">

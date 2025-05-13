@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Carômetro{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Carômetro</h1>
+    <form method="POST" class="form-group">
+        <label for="turma">Filtrar por Turma:</label>
+        <select name="turma" id="turma" class="form-control">
+            <option value="">Todas as Turmas</option>
+            {% for turma in turmas %}
+                <option value="{{ turma }}" {% if turma == turma_selecionada %}selected{% endif %}>{{ turma }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit" class="btn salvar">Filtrar</button>
+    </form>
+
+    <div class="carometro-container">
+        {% for aluno in alunos %}
+        <div class="carometro-cartao">
+            <img src="{{ url_for('static', filename='fotos/' ~ aluno['Foto']) }}" alt="Foto do Aluno" class="carometro-foto">
+            <div class="carometro-info">
+                <h3>{{ aluno['Nome'] }}</h3>
+                <p><strong>Turma:</strong> {{ aluno['Turma'] }}</p>
+                <p><strong>Código:</strong> {{ aluno['Codigo'] }}</p>
+                <p><strong>Turno:</strong> {{ aluno['Turno'] }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
